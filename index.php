@@ -4,16 +4,29 @@ include_once __DIR__  . '/classi/movie.php';
 
 
 $movie1 = new Movie( 'batman', 1990, 'action', 9  );
-echo $movie1->voteRange();
-var_dump($movie1);
+echo $movie1->title;
+//echo $movie1->voteRange();
+//var_dump($movie1);
 
 $movie2 = new Movie( 'spiderman', 2000, 'action', 6  );
-echo $movie2->voteRange();
-var_dump($movie2);
+//echo $movie2->voteRange();
+//var_dump($movie2);
 
 $movie3 = new Movie ('monella', 1998, 'erotico', 4);
-echo $movie3->voteRange();
-var_dump($movie3);
+//echo $movie3->voteRange();
+//var_dump($movie3);
+
+$movie = '';
+//Aggiornamento del form per evitare gli errori e attivare il form solo se estitono dei parametri
+if( !empty($_GET) && !empty( $_GET['title'] ) && !empty( $_GET['year'] ) && !empty( $_GET['genre'] ) ){
+    $title = $_GET['title'];
+    $year = $_GET['year'];
+    $genre = $_GET['genre'];
+  
+    $movie = new Movie( $title, $year, $genre );
+    var_dump( $movie );
+  }
+  
 
 
 
@@ -39,6 +52,24 @@ var_dump($movie3);
     <!-- place navbar here -->
   </header>
   <main>
+
+  <h1>Inserisci un Film</h1>
+  <form method="GET" action="">
+  <input type="text" placeholder="title" name="title">
+  <input type="text" placeholder="year" name="year">
+  <input type="text" placeholder="genre" name="genre">
+  <button class="btn btn-primary" type="submit">invia</button>
+  </form>
+
+  <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> <?php echo $movie->title ?> </h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
 
   </main>
   <footer>
