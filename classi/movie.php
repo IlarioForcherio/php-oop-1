@@ -6,6 +6,7 @@ class Movie{
     public $year;
     public $genre;
     public $vote;
+    public $image;
 
 
 
@@ -16,7 +17,8 @@ class Movie{
         $this->title = $_x;
         $this->year = $_y;
         $this->genre = $_z;
-        $this->vote = rand(1,100) ;
+        $this->vote = rand(1,10) ;
+        $this-> image = ('https://picsum.photos/200/300');
 
     }
 
